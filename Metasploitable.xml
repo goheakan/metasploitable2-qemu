@@ -1,0 +1,35 @@
+<domain type='kvm'>
+  <name>Metasploitable2</name>
+  <uuid>a7b172b5-1432-45f0-bd75-5a06680a5276</uuid>
+  <memory>524288</memory>
+  <currentMemory>524288</currentMemory>
+  <vcpu>1</vcpu>
+  <os>
+    <type arch='i686' machine='pc'>hvm</type>
+    <boot dev='hd'/>
+  </os>
+  <features>
+    <acpi/>
+  </features>
+  <clock offset='utc'/>
+  <on_poweroff>destroy</on_poweroff>
+  <on_reboot>restart</on_reboot>
+  <on_crash>destroy</on_crash>
+  <devices>
+    <emulator>/usr/bin/qemu-system-x86_64</emulator>
+    <disk type='file' device='disk'>
+      <source file='/var/lib/libvirt/images/Metasploitable.vmdk'/>
+      <target dev='hda' />
+    </disk>
+    <interface type='network'>
+      <mac address='00:0C:29:FA:DD:2A'/>
+      <source network='default'/>
+    </interface>
+    <interface type='network'>
+      <mac address='00:0C:29:FA:DD:34'/>
+      <source network='default'/>
+    </interface>
+    <input type='mouse' bus='ps2'/>
+    <graphics type='vnc' port='-1' listen='127.0.0.1'/>
+  </devices>
+</domain>
